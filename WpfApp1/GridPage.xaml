@@ -1,0 +1,37 @@
+﻿<Page x:Class="WpfApp1.GridPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="GridPage" Height="450" Width="800">
+    <Grid>
+        <Grid Background="Aquamarine">
+
+        </Grid>
+        <Label Content="Grid Overview" HorizontalAlignment="Left" FontSize="20" FontFamily="Bookman Old Style" Width="270" Grid.Column="1" Margin="132,0,0,0"/>
+        <Label Content="Enter account number:" VerticalAlignment="Top" FontFamily="Bookman Old Style" Margin="0,50,442,0" HorizontalAlignment="Right" Width="217"/>
+        <TextBox x:Name="numaccBox" VerticalAlignment="Top" Margin="141,81,462,0" TextChanged="ChangeStateNumber"/>
+        <Label Content="Enter bank:" VerticalAlignment="Top" FontFamily="Bookman Old Style" Margin="392,50,127,0"/>
+        <ComboBox Name="MarkBox" HorizontalAlignment="Left" Margin="400,81,0,0" VerticalAlignment="Top" Width="111"  SelectionChanged="ChangeMark" DisplayMemberPath="BankName"/>
+        <Button Content="Add" Name="AddButton" Click="AddCarPage" HorizontalAlignment="Left" Margin="590,74,0,0" VerticalAlignment="Top" Height="23" Width="58" RenderTransformOrigin="0.5,0.5"/>
+        <DataGrid AutoGenerateColumns="False" Grid.Column="1" Margin="10,118,27,45" Name="moneytable">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Account number" Width="*" Binding="{Binding AccountNumber}"/>
+                <DataGridTextColumn Header="FIO" Width="*" Binding="{Binding FIO}"/>
+                <DataGridTextColumn Header="Bank Name" Width="*" Binding="{Binding BankName}"/>
+                <DataGridTextColumn Header="Deposited" Width="*" Binding="{Binding Deposited}"/>
+                <DataGridTextColumn Header="Withdrawn" Width="*" Binding="{Binding Withdrawn}"/>
+                <DataGridTextColumn Header="Total" Width="*" Binding="{Binding Total}"/>
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Редактировать" Click="EditCarPage"/>
+                    <MenuItem Header="Удалить" Click="DeleteCarPage"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+        <Frame Grid.Column="1" x:Name="NewFrame3Edit" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Page>

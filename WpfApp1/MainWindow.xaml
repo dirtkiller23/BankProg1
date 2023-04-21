@@ -1,0 +1,27 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Background="Green">
+            <StackPanel>
+                <Image Source="C:\Users\windeck\Documents\Bank-PNG-File.png" Margin="10" Height="99" Width="146"/>
+                <Button Name="GridButton" Content="Grid Overview" Click="ShowGridPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21"/>
+                <Button Name="MoneyButton" Content="Money Transfer" Click="ShowMoneyPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21"/>
+                <Button Name="TicTacButton" Content="Tic Tac Toe" Click="ShowTicTacPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21"/>
+                <Button Name="CaesarButton" Content="Caesar Cipher" Click="ShowCaesarPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21"/>
+            </StackPanel>
+        </Grid>
+        <Frame Grid.Column="1" x:Name="NewFrame" NavigationUIVisibility="Hidden"/>
+    </Grid>
+    
+</Window>
+
