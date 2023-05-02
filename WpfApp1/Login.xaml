@@ -19,12 +19,12 @@
             <ColumnDefinition Width="541*"/>
             <ColumnDefinition Width="187*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Authentication system" HorizontalAlignment="Left" VerticalAlignment="Top" Height="46" Width="216" FontSize="20" FontFamily="Bookman Old Style" Grid.Column="2" Margin="185,121,0,0"/>
-        <Label Content="Login" HorizontalAlignment="Left" Margin="206,155,0,0" VerticalAlignment="Top" Width="175" FontFamily="Bookman Old Style" Grid.Column="2"/>
+        <Label Content="Authentication system" HorizontalAlignment="Left" VerticalAlignment="Top" Height="46" Width="346" FontSize="32" FontFamily="Bookman Old Style" Grid.Column="2" Margin="120,92,0,0"/>
+        <Label Content="Login" HorizontalAlignment="Left" Margin="206,145,0,0" VerticalAlignment="Top" Width="175" FontFamily="Bookman Old Style" Grid.Column="2" FontSize="24"/>
         <TextBox HorizontalAlignment="Left" Margin="206,184,0,0" TextWrapping="Wrap" Name="login" Text="" VerticalAlignment="Top" Width="168" Grid.Column="2"/>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="206,207,0,0" VerticalAlignment="Top" Width="136" FontFamily="Bookman Old Style" Grid.Column="2"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="206,207,0,0" VerticalAlignment="Top" Width="136" FontFamily="Bookman Old Style" Grid.Column="2" FontSize="24"/>
         <TextBox HorizontalAlignment="Left" Margin="206,238,0,0" TextWrapping="Wrap" Name="password" Text="" VerticalAlignment="Top" Width="168" Grid.Column="2"/>
-        <Button Content="Enter" HorizontalAlignment="Left" Margin="252,271,0,0" Name="LoginButton" VerticalAlignment="Top" Width="76" Grid.Column="2" Click="Button_login"/>
+        <Button Content="Enter" HorizontalAlignment="Left" Margin="213,278,0,0" Name="LoginButton" VerticalAlignment="Top" Width="129" Grid.Column="2" Click="Button_login" Height="41" FontSize="24"/>
         <Image Margin="36,29,484,322" Source="C:\Users\windeck\Documents\Bank-PNG-File.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3">
             <Image.RenderTransform>
                 <TransformGroup>
@@ -35,7 +35,8 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Label Grid.Column="2" Content="Money Bank" HorizontalAlignment="Left" Margin="247,52,0,0" FontFamily="Bookman Old Style" VerticalAlignment="Top" FontSize="15"/>
+        <Label Grid.Column="2" Content="Money Bank" HorizontalAlignment="Left" Margin="154,10,0,0" FontFamily="Bookman Old Style" VerticalAlignment="Top" FontSize="48"/>
         <Frame Grid.Column="1" x:Name="NewFrame" NavigationUIVisibility="Hidden"/>
+        <Label Content="HELP: You can login into the program on this form." HorizontalAlignment="Left" VerticalAlignment="Top" Height="46" Width="759" FontSize="24" FontFamily="Bookman Old Style" Margin="0,415,0,0" Grid.ColumnSpan="4"/>
     </Grid>
 </Page>

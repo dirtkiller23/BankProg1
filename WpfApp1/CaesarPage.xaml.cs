@@ -24,23 +24,25 @@ namespace WpfApp1
         public CaesarPage()
         {
             InitializeComponent();
+            outputTextBox.IsReadOnly = true;
+            encodeTextbox.IsReadOnly = true;
+            decodeTextbox.IsReadOnly = true;
         }
 
         private void Button_execute(object sender, RoutedEventArgs e)
         {
             b = Encoding.ASCII.GetBytes(inputTextBox.Text);
             foreach (byte element in b)
-            {
+            {                
                 outputTextBox.Text += element + " - " + (char)element + "\r\n";
             }
         }
 
         private void Button_Encode(object sender, RoutedEventArgs e)
-        {
+        {            
             foreach (byte element in b)
             {
                 encodeTextbox.Text += (char)(element + Convert.ToInt16(keyTextbox.Text));
-
             }
         }
 
@@ -49,6 +51,7 @@ namespace WpfApp1
             b = Encoding.ASCII.GetBytes(encodeTextbox.Text);
             foreach (byte element in b)
             {
+               
                 decodeTextbox.Text += (char)(element - Convert.ToInt16(keyTextbox.Text));
             }
         }

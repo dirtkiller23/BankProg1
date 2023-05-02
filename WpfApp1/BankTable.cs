@@ -14,6 +14,13 @@ namespace WpfApp1
     
     public partial class BankTable
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public BankTable()
+        {
+            this.Transaction_history = new HashSet<Transaction_history>();
+            this.Transaction_history1 = new HashSet<Transaction_history>();
+        }
+    
         public long AccountNumber { get; set; }
         public string FIO { get; set; }
         public string BankName { get; set; }
@@ -21,5 +28,10 @@ namespace WpfApp1
         public Nullable<double> Withdrawn { get; set; }
         public string Password { get; set; }
         public Nullable<double> Total { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Transaction_history> Transaction_history { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Transaction_history> Transaction_history1 { get; set; }
     }
 }

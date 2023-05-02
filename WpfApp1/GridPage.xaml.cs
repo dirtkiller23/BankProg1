@@ -20,36 +20,22 @@ namespace WpfApp1
     /// </summary>
     public partial class GridPage : Page
     {
-        bankEntities context;
+        bankEntities1 context;
         public GridPage()
         {
             InitializeComponent();
-            context = new bankEntities();
-            moneytable.ItemsSource = context.BankTable.ToList();
-
-            var markList = context.BankTable.ToList();
-            markList.Insert(0, new BankTable() { BankName = "All" });
-            MarkBox.ItemsSource = markList;
-
+            context = new bankEntities1();
+            moneytable.ItemsSource = context.BankTable.ToList();            
         }
         public void RefreshData()
         {
-            var list = context.BankTable.ToList();
-            if (MarkBox.SelectedIndex > 0)
-            {
-                BankTable greg = MarkBox.SelectedItem as BankTable;
-                list = list.Where(x => x.BankName == greg.ToString()).ToList();
-            }
+            var list = context.BankTable.ToList();         
             if (!string.IsNullOrWhiteSpace(numaccBox.Text))
             {
                 list = list.Where(x => x.AccountNumber.ToString().ToLower().Contains(numaccBox.Text.ToLower())).ToList();
             }
             moneytable.ItemsSource = list;
-        }
-        private void ChangeMark(object sender, SelectionChangedEventArgs e)
-        {
-            RefreshData();
-        }
+        }       
         private void ChangeStateNumber(object sender, TextChangedEventArgs e)
         {
             RefreshData();

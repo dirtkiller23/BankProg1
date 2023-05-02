@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TicTacToe">
-    
+
     <Page.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Margin" Value="5"/>
@@ -45,8 +45,8 @@
 
         <TextBlock x:Name="WinScreen" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="56" FontWeight="Bold" Background="WhiteSmoke" Visibility="Collapsed">Player X Wins!!!</TextBlock>
 
-        <Button x:Name="btnNewGame" Margin="5" FontSize="48" Content="New Game" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center" Click="btnNewGame_Click"/>
-        
+        <Button x:Name="btnNewGame" FontSize="32" Content="New Game" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Top" Click="btnNewGame_Click" Height="40" Margin="0,5,0,0"/>
+        <Label Content="HELP: You can play Tic-Tac Toe here." HorizontalAlignment="Left" VerticalAlignment="Top" Height="46" Width="759" FontSize="24" FontFamily="Bookman Old Style" Margin="0,415,0,0" Grid.ColumnSpan="4"/>
     </Grid>
 
 

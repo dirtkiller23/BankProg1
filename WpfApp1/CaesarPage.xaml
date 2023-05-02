@@ -11,7 +11,7 @@
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="White"/>
+                <GradientStop Color="Aquamarine"/>
                 <GradientStop Color="#FFB7C7E7" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
@@ -21,19 +21,20 @@
             <ColumnDefinition Width="541*"/>
             <ColumnDefinition Width="187*"/>
         </Grid.ColumnDefinitions>
-        <TextBox HorizontalAlignment="Left" Margin="30,68,0,0" TextWrapping="Wrap" Name="inputTextBox" Text="" VerticalAlignment="Top" Width="226" Height="107" Grid.ColumnSpan="3"/>
-        <TextBox HorizontalAlignment="Left" Margin="323,68,0,0" TextWrapping="Wrap" Name="outputTextBox" Text="" VerticalAlignment="Top" Width="199" Grid.Column="2" Height="107"/>
-        <Button Content="Start" HorizontalAlignment="Left" Margin="10,390,0,0" Name="StartButton" VerticalAlignment="Top" Width="147" Grid.Column="3" Click="Button_execute" Height="50" FontSize="24"/>
+        <TextBox HorizontalAlignment="Left" Margin="50,70,0,0" TextWrapping="Wrap" Name="inputTextBox" Text="" VerticalAlignment="Top" Width="186" Height="44" Grid.ColumnSpan="3"/>
+        <TextBox HorizontalAlignment="Left" Margin="307,68,0,0" TextWrapping="Wrap" Name="outputTextBox" Text="" VerticalAlignment="Top" Width="215" Grid.Column="2" Height="130"/>
+        <Button Content="Start" Background="Aquamarine" FontFamily="FuturaLtBT" HorizontalAlignment="Left" Margin="10,332,0,0" Name="StartButton" VerticalAlignment="Top" Width="147" Grid.Column="3" Click="Button_execute" Height="50" FontSize="24"/>
         <Frame Grid.Column="1" x:Name="NewFrame" NavigationUIVisibility="Hidden"/>
-        <Label Grid.Column="2" Content="Input" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="159" FontFamily="Arial Black" FontSize="24"/>
-        <Label Grid.Column="2" Content="by Letter" HorizontalAlignment="Left" Margin="343,30,0,0" VerticalAlignment="Top" Width="159" FontFamily="Arial Black" FontSize="24"/>
-        <TextBox HorizontalAlignment="Left" Margin="30,282,0,0" TextWrapping="Wrap" x:Name="encodeTextbox" Text="" VerticalAlignment="Top" Width="226" Height="107" Grid.ColumnSpan="3"/>
-        <Label Grid.Column="2" Content="Encode" HorizontalAlignment="Left" Margin="5,243,0,0" VerticalAlignment="Top" Width="159" FontFamily="Arial Black" FontSize="24"/>
-        <TextBox HorizontalAlignment="Left" Margin="296,282,0,0" TextWrapping="Wrap" x:Name="decodeTextbox" Text="" VerticalAlignment="Top" Width="226" Height="107" Grid.Column="2"/>
-        <Label Grid.Column="2" Content="Decode" HorizontalAlignment="Left" Margin="343,244,0,0" VerticalAlignment="Top" Width="159" FontFamily="Arial Black" FontSize="24"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,94,0,0" TextWrapping="Wrap" x:Name="keyTextbox" Text="" VerticalAlignment="Top" Width="103" Height="56" Grid.Column="3"/>
-        <Label Grid.Column="3" Content="Private key" HorizontalAlignment="Center" Margin="0,56,0,0" VerticalAlignment="Top" Width="159" FontFamily="Arial Black" FontSize="24"/>
-        <Button Content="Encode" HorizontalAlignment="Left" Margin="11,404,0,0" x:Name="EncodeButton" VerticalAlignment="Top" Width="146" Grid.Column="1" Click="Button_Encode" Height="36" FontSize="24" Grid.ColumnSpan="2"/>
-        <Button Content="Decode" HorizontalAlignment="Left" Margin="336,404,0,0" x:Name="DecodeButton" VerticalAlignment="Top" Width="146" Grid.Column="2" Click="Button_Decode" Height="36" FontSize="24"/>
+        <Label Grid.Column="2" Content="Input" HorizontalAlignment="Left" Margin="25,32,0,0" VerticalAlignment="Top" Width="159" FontFamily="Arial" FontSize="24"/>
+        <Label Grid.Column="2" Content="By Letter" HorizontalAlignment="Left" Margin="353,30,0,0" VerticalAlignment="Top" Width="159" FontFamily="Arial" FontSize="24"/>
+        <TextBox HorizontalAlignment="Left" Margin="50,282,0,0" TextWrapping="Wrap" x:Name="encodeTextbox" Text="" VerticalAlignment="Top" Width="186" Height="39" Grid.ColumnSpan="3"/>
+        <Label Grid.Column="2" Content="Encode" HorizontalAlignment="Left" Margin="10,244,0,0" VerticalAlignment="Top" Width="159" FontFamily="Arial" FontSize="24"/>
+        <TextBox HorizontalAlignment="Left" Margin="316,282,0,0" TextWrapping="Wrap" x:Name="decodeTextbox" Text="" VerticalAlignment="Top" Width="186" Height="39" Grid.Column="2"/>
+        <Label Grid.Column="2" Content="Decode" HorizontalAlignment="Left" Margin="353,244,0,0" VerticalAlignment="Top" Width="159" FontFamily="Arial" FontSize="24"/>
+        <TextBox HorizontalAlignment="Center" Margin="0,94,0,0" TextWrapping="Wrap" x:Name="keyTextbox" Text="" VerticalAlignment="Top" Width="103" Height="39" Grid.Column="3"/>
+        <Label Grid.Column="3" Content="Private key" HorizontalAlignment="Left" Margin="28,56,0,0" VerticalAlignment="Top" Width="159" FontFamily="Arial" FontSize="24"/>
+        <Button Content="Encode" Background="Aquamarine" FontFamily="FuturaLtBT"  HorizontalAlignment="Left" Margin="7,346,0,0" x:Name="EncodeButton" VerticalAlignment="Top" Width="146" Grid.Column="1" Click="Button_Encode" Height="36" FontSize="24" Grid.ColumnSpan="2"/>
+        <Button Content="Decode" Background="Aquamarine" FontFamily="FuturaLtBT" HorizontalAlignment="Left" Margin="336,346,0,0" x:Name="DecodeButton" VerticalAlignment="Top" Width="146" Grid.Column="2" Click="Button_Decode" Height="36" FontSize="24"/>
+        <Label Content="HELP: Encode and decode text through Caesar cipher." HorizontalAlignment="Left" VerticalAlignment="Top" Height="46" Width="759" FontSize="24" FontFamily="Bookman Old Style" Margin="0,415,0,0" Grid.ColumnSpan="4"/>
     </Grid>
 </Page>

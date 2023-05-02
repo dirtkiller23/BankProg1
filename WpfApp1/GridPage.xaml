@@ -11,10 +11,8 @@
 
         </Grid>
         <Label Content="Grid Overview" HorizontalAlignment="Left" FontSize="20" FontFamily="Bookman Old Style" Width="270" Grid.Column="1" Margin="132,0,0,0"/>
-        <Label Content="Enter account number:" VerticalAlignment="Top" FontFamily="Bookman Old Style" Margin="0,50,442,0" HorizontalAlignment="Right" Width="217"/>
+        <Label Content="Search account number:" VerticalAlignment="Top" FontFamily="Bookman Old Style" Margin="0,50,442,0" HorizontalAlignment="Right" Width="217"/>
         <TextBox x:Name="numaccBox" VerticalAlignment="Top" Margin="141,81,462,0" TextChanged="ChangeStateNumber"/>
-        <Label Content="Enter bank:" VerticalAlignment="Top" FontFamily="Bookman Old Style" Margin="392,50,127,0"/>
-        <ComboBox Name="MarkBox" HorizontalAlignment="Left" Margin="400,81,0,0" VerticalAlignment="Top" Width="111"  SelectionChanged="ChangeMark" DisplayMemberPath="BankName"/>
         <Button Content="Add" Name="AddButton" Click="AddCarPage" HorizontalAlignment="Left" Margin="590,74,0,0" VerticalAlignment="Top" Height="23" Width="58" RenderTransformOrigin="0.5,0.5"/>
         <DataGrid AutoGenerateColumns="False" Grid.Column="1" Margin="10,118,27,45" Name="moneytable">
             <DataGrid.Columns>
@@ -32,6 +30,7 @@
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
+        <Label Content="HELP: You can delete or edit data by right-clicking the grid." HorizontalAlignment="Left" VerticalAlignment="Top" Height="46" Width="759" FontSize="24" FontFamily="Bookman Old Style" Margin="0,415,0,0" Grid.ColumnSpan="4"/>
         <Frame Grid.Column="1" x:Name="NewFrame3Edit" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

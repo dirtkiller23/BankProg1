@@ -25,22 +25,23 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid Background="Aquamarine" Grid.ColumnSpan="2" Grid.RowSpan="11">
+            <Label Content="HELP: This is the page for adding/editing/deleting data." HorizontalAlignment="Left" VerticalAlignment="Top" Height="46" Width="759" FontSize="24" FontFamily="Bookman Old Style" Margin="0,415,0,0" Grid.ColumnSpan="4"/>
         </Grid>
-        <Label Content="Data edit" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="262,38,0,0"/>
-        <Label Content="Account Number:" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2" FontSize="18"/>
-        <TextBox Name="idBox" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" FontSize="18" Margin="5" Width="250"/>
-        <Label Content="FIO:" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="3" FontSize="18"/>
-        <TextBox Name="fioBox" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1" FontSize="18" Margin="5" Width="250"/>
-        <Label Content="Bank Name:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18" Margin="294,0,0,0" Height="37" Grid.Row="4"/>
-        <TextBox Name="bankNameTextBox" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="1" FontSize="18" Margin="5,0,0,0" Width="250"/>
-        <Label Content="Total:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18" Margin="223,38,0,0" Height="37" Grid.Row="9" Grid.RowSpan="2"/>
-        <TextBox Name="totalTextBox" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="10" Grid.Column="1" FontSize="18" Margin="5,0,0,0" Width="250"/>
-        <Label Content="Deposited:" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="5" FontSize="18" Margin="294,0,0,0" Width="106"/>
-        <TextBox Name="depositBox" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="5" Grid.Column="1" FontSize="18" Margin="5,0,0,0" Width="250"/>
-        <Label Content="Withdrawn:" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="6" FontSize="18" Margin="286,2,0,0"/>
-        <TextBox Name="withdrBox" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="6" Grid.Column="1" FontSize="18" Margin="5,0,0,0" Width="250"/>
-        <Label Content="Password:" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="6" FontSize="18" Margin="311,38,0,0" Grid.RowSpan="2"/>
-        <TextBox Name="passBox" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="7" Grid.Column="1" FontSize="18" Margin="5,0,0,0" Width="250"/>
+        <Label Content="Data edit" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24" Grid.ColumnSpan="2" Margin="336,0,0,0"/>
+        <Label Content="Account Number:" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="1" FontSize="18" Margin="0,11,0,0" Grid.RowSpan="2"/>
+        <TextBox Name="idBox" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" FontSize="18" Margin="5,15,0,0" Width="250" Grid.RowSpan="2"/>
+        <Label Content="FIO:" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="2" FontSize="18" Margin="0,11,0,0" Grid.RowSpan="2"/>
+        <TextBox Name="fioBox" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" FontSize="18" Margin="5,15,0,0" Width="250" Grid.RowSpan="2"/>
+        <Label Content="Bank Name:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18" Margin="294,7,0,0" Height="37" Grid.Row="3" Grid.RowSpan="2"/>
+        <TextBox Name="bankNameTextBox" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1" FontSize="18" Margin="5,15,0,0" Width="250" Grid.RowSpan="2"/>
+        <Label Content="Total:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18" Margin="310,5,0,0" Height="37" Grid.Row="7" Grid.RowSpan="2"/>
+        <TextBox Name="totalTextBox" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="7" Grid.Column="1" FontSize="18" Margin="5,0,0,0" Width="250"/>
+        <Label Content="Deposited:" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="4" FontSize="18" Margin="294,11,0,0" Width="106" Grid.RowSpan="2"/>
+        <TextBox Name="depositBox" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="1" FontSize="18" Margin="5,15,0,0" Width="250" Grid.RowSpan="2"/>
+        <Label Content="Withdrawn:" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="5" FontSize="18" Margin="286,9,0,0" Grid.RowSpan="2"/>
+        <TextBox Name="withdrBox" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="5" Grid.Column="1" FontSize="18" Margin="5,15,0,0" Width="250"/>
+        <Label Content="Password:" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="6" FontSize="18" Margin="311,5,0,0"/>
+        <TextBox Name="passBox" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="6" Grid.Column="1" FontSize="18" Margin="5,15,0,0" Width="250"/>
         <Button Content="Сохранить" Grid.Row="9" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Width="150" FontSize="20" Click="SaveCar" Margin="325,0,0,0"/>
         <Frame Grid.Column="1" x:Name="NewFrame3Edit" NavigationUIVisibility="Hidden"/>
     </Grid>

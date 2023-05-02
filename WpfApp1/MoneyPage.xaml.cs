@@ -22,73 +22,44 @@ namespace WpfApp1
     /// </summary>
     public partial class MoneyPage : Page
     {
-        bankEntities context;
-        public MoneyPage(bankEntities cont)
+        bankEntities1 bd = new bankEntities1();
+        public MoneyPage(bankEntities1 cont)
         {
-            InitializeComponent();
-            context = cont;
-            flag = true;
+            InitializeComponent();          
         }
-        bool flag;
-        private void Initialize(object sender, RoutedEventArgs e)
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (flag == true)
+            if (idBoxFrom.Text == "" || idBoxTo.Text == "")
             {
-                BankTable bank = new BankTable()
-                {
-                    AccountNumber = Convert.ToInt64(idBoxFrom.Text),                   
-                    FIO = fioBoxFrom.Text,                    
-                    BankName = (bankNameComboBoxFrom.SelectedItem as BankTable).BankName,                  
-                    Total = Convert.ToDouble(SendAmountBox.Text),                   
-                };             
-                context.SaveChanges();
-                NewFrame3Edit.Navigate(new GridPage());
+                MessageBox.Show("No data entered!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                context.BankTable.Find(greg.AccountNumber).AccountNumber = Convert.ToInt64(idBoxFrom.Text);
-                context.BankTable.Find(greg.FIO).FIO = fioBoxFrom.Text;
-                context.BankTable.Find(greg.FIO).FIO = fioBoxTo.Text;
-                context.BankTable.Find(greg.Total).Total = Convert.ToDouble(SendAmountBox.Text);                
-                context.BankTable.Find(greg.BankName).BankName = (bankNameComboBoxFrom.SelectedItem as BankTable).BankName;               
-                context.SaveChanges();
-                NewFrame3Edit.Navigate(new GridPage());
+                {
+                    
+                    {
+                        BankTable t = bd.BankTable.Find(Int64.Parse(idBoxFrom.Text));
+                        BankTable t2 = bd.BankTable.Find(Int64.Parse(idBoxTo.Text));
+                        var a = t2.Total;
+                        if (a == null)
+                            t2.Total = 0;
+                        if (t.Total >= float.Parse(SendAmountBox.Text))
+                        {
+                            t.Total = t.Total - Math.Round(float.Parse(SendAmountBox.Text), 2);
+                            t2.Total = t2.Total + Math.Round(float.Parse(SendAmountBox.Text), 2);
+                            //bd.Database.ExecuteSqlCommand("insert into Transaction_history(Amount,Sender,Reciever,TransferTime) values ({0},{1},{2},{3})", Math.Round(float.Parse(SendAmountBox.Text), 2), Int64.Parse(idBoxFrom.Text), Int64.Parse(idBoxTo.Text), DateTime.Now);
+                            bd.SaveChanges();
+                            MessageBox.Show("Transfer Successful");
+                        }
+                        else { MessageBox.Show("Not enough money"); }
+
+
+
+                    };
+                    }
             }
         }
-        BankTable greg;
-
-        public MoneyPage(bankEntities cont, BankTable grug)
-        {
-            InitializeComponent();
-            context = cont;
-            greg = grug;
-            bankNameComboBoxFrom.ItemsSource = context.BankTable.ToList();
-            SendAmountBox.Text = greg.Total.ToString();           
-            idBoxFrom.Text = greg.AccountNumber.ToString();
-            fioBoxFrom.Text = greg.FIO;         
-            flag = false;
-        }
     }
-}
-
-
-
-
-
-//{
-// var markList = context.BankTable.ToList();
-//markList.Insert(0, new BankTable() { BankName = "All" });
-//bankNameComboBoxFrom.ItemsSource = markList;
-//bankNameComboBoxTo.ItemsSource = markList;
-//var list = context.BankTable.ToList();
-// if (bankNameComboBoxFrom.SelectedIndex > 0)
-// {
-//    BankTable greg = bankNameComboBoxFrom.SelectedItem as BankTable;
-//     list = list.Where(x => x.BankName == greg.ToString()).ToList();
-// }
-// if (bankNameComboBoxTo.SelectedIndex > 0)
-//{
-//  BankTable greg = bankNameComboBoxTo.SelectedItem as BankTable;
-//   list = list.Where(x => x.BankName == greg.ToString()).ToList();
-//}
-//}
+}                          

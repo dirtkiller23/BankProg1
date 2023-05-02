@@ -20,8 +20,8 @@ namespace WpfApp1
     /// </summary>
     public partial class GridPageEditAdd : Page
     {
-        bankEntities context;
-        public GridPageEditAdd(bankEntities cont)
+        bankEntities1 context;
+        public GridPageEditAdd(bankEntities1 cont)
         {
             InitializeComponent();
             context = cont;           
@@ -61,7 +61,7 @@ namespace WpfApp1
         }
         BankTable greg;
 
-        public GridPageEditAdd(bankEntities cont, BankTable grug)
+        public GridPageEditAdd(bankEntities1 cont, BankTable grug)
         {
             InitializeComponent();
             context = cont;

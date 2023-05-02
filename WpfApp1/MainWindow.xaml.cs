@@ -21,7 +21,7 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        bankEntities context;
+        bankEntities1 context;
 
         public static MainWindow _instance;
         public MainWindow()
@@ -29,14 +29,17 @@ namespace WpfApp1
             _instance = this;
             InitializeComponent();
             GridButton.IsEnabled = false;
-            MoneyButton.IsEnabled = false;           
+            MoneyButton.IsEnabled = false;
+            DepositWithdrawButton.IsEnabled = false;
             NewFrame.Navigate(new LoginPage());
         }
 
         public void Eban()
         {
             GridButton.IsEnabled = true;
-            MoneyButton.IsEnabled = true;          
+            MoneyButton.IsEnabled = true;
+            DepositWithdrawButton.IsEnabled = true;
+            LoginButton.IsEnabled = false;
         }
         
         private void ShowGridPage(object sender, RoutedEventArgs e)
@@ -54,6 +57,18 @@ namespace WpfApp1
         private void ShowCaesarPage(object sender, RoutedEventArgs e)
         {
             NewFrame.Navigate(new CaesarPage());
+        }
+        private void ShowLoginPage(object sender, RoutedEventArgs e)
+        {
+            NewFrame.Navigate(new LoginPage());
+        }
+        private void ShowDepositPage(object sender, RoutedEventArgs e)
+        {
+            NewFrame.Navigate(new DepositTransferPage());
+        }
+        private void ShowHistoryPage(object sender, RoutedEventArgs e)
+        {
+            NewFrame.Navigate(new HistoryPage());
         }
     }
 }

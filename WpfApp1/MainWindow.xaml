@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="490" Width="985">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -13,15 +13,18 @@
         </Grid.ColumnDefinitions>
         <Grid Background="Green">
             <StackPanel>
-                <Image Source="C:\Users\windeck\Documents\Bank-PNG-File.png" Margin="10" Height="99" Width="146"/>
+                <Image Source="/bank.png" Margin="10" Height="99" Width="146"/>
+                <Button x:Name="LoginButton" Content="Login Form" Click="ShowLoginPage"  Width="136" Height="21"/>
                 <Button Name="GridButton" Content="Grid Overview" Click="ShowGridPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21"/>
                 <Button Name="MoneyButton" Content="Money Transfer" Click="ShowMoneyPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21"/>
+                <Button x:Name="DepositWithdrawButton" Content="Deposit and Withdraw" Click="ShowDepositPage"  Width="136" Height="21"/>
                 <Button Name="TicTacButton" Content="Tic Tac Toe" Click="ShowTicTacPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21"/>
                 <Button Name="CaesarButton" Content="Caesar Cipher" Click="ShowCaesarPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21"/>
+                <Button x:Name="HistoryButton" Content="Transaction History" Click="ShowHistoryPage"  Width="136" Height="21"/>
             </StackPanel>
         </Grid>
         <Frame Grid.Column="1" x:Name="NewFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
-    
+
 </Window>
 
