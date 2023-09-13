@@ -20,11 +20,11 @@ namespace WpfApp1
     /// </summary>
     public partial class GridPage : Page
     {
-        bankEntities1 context;
+        flightEntities1 context;
         public GridPage()
         {
             InitializeComponent();
-            context = new bankEntities1();
+            context = new flightEntities1();
             moneytable.ItemsSource = context.BankTable.ToList();            
         }
         public void RefreshData()

@@ -21,7 +21,7 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        bankEntities1 context;
+        flightEntities1 context;
 
         public static MainWindow _instance;
         public MainWindow()
@@ -29,46 +29,25 @@ namespace WpfApp1
             _instance = this;
             InitializeComponent();
             GridButton.IsEnabled = false;
-            MoneyButton.IsEnabled = false;
-            DepositWithdrawButton.IsEnabled = false;
+            GridButton.Visibility = Visibility.Collapsed;
             NewFrame.Navigate(new LoginPage());
         }
 
         public void Eban()
-        {
+        {       
             GridButton.IsEnabled = true;
-            MoneyButton.IsEnabled = true;
-            DepositWithdrawButton.IsEnabled = true;
+            GridButton.Visibility = Visibility.Visible;
             LoginButton.IsEnabled = false;
+            LoginButton.Visibility = Visibility.Collapsed;
         }
         
         private void ShowGridPage(object sender, RoutedEventArgs e)
         {
             NewFrame.Navigate(new GridPage());
-        }
-        private void ShowMoneyPage(object sender, RoutedEventArgs e)
-        {          
-            NewFrame.Navigate(new MoneyPage(context)); 
-        }
-        private void ShowTicTacPage(object sender, RoutedEventArgs e)
-        {
-            NewFrame.Navigate(new TicTacToe());
-        }
-        private void ShowCaesarPage(object sender, RoutedEventArgs e)
-        {
-            NewFrame.Navigate(new CaesarPage());
-        }
+        }      
         private void ShowLoginPage(object sender, RoutedEventArgs e)
         {
             NewFrame.Navigate(new LoginPage());
-        }
-        private void ShowDepositPage(object sender, RoutedEventArgs e)
-        {
-            NewFrame.Navigate(new DepositTransferPage());
-        }
-        private void ShowHistoryPage(object sender, RoutedEventArgs e)
-        {
-            NewFrame.Navigate(new HistoryPage());
-        }
+        }                  
     }
 }

@@ -13,15 +13,18 @@
         <Label Content="Grid Overview" HorizontalAlignment="Left" FontSize="20" FontFamily="Bookman Old Style" Width="270" Grid.Column="1" Margin="132,0,0,0"/>
         <Label Content="Search account number:" VerticalAlignment="Top" FontFamily="Bookman Old Style" Margin="0,50,442,0" HorizontalAlignment="Right" Width="217"/>
         <TextBox x:Name="numaccBox" VerticalAlignment="Top" Margin="141,81,462,0" TextChanged="ChangeStateNumber"/>
-        <Button Content="Add" Name="AddButton" Click="AddCarPage" HorizontalAlignment="Left" Margin="590,74,0,0" VerticalAlignment="Top" Height="23" Width="58" RenderTransformOrigin="0.5,0.5"/>
+        <Button Content="Reserve" Name="AddButton" Click="AddCarPage" HorizontalAlignment="Left" Margin="481,50,0,0" VerticalAlignment="Top" Height="47" Width="167" RenderTransformOrigin="0.5,0.5" FontSize="24"/>
         <DataGrid AutoGenerateColumns="False" Grid.Column="1" Margin="10,118,27,45" Name="moneytable">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Account number" Width="*" Binding="{Binding AccountNumber}"/>
                 <DataGridTextColumn Header="FIO" Width="*" Binding="{Binding FIO}"/>
-                <DataGridTextColumn Header="Bank Name" Width="*" Binding="{Binding BankName}"/>
-                <DataGridTextColumn Header="Deposited" Width="*" Binding="{Binding Deposited}"/>
-                <DataGridTextColumn Header="Withdrawn" Width="*" Binding="{Binding Withdrawn}"/>
-                <DataGridTextColumn Header="Total" Width="*" Binding="{Binding Total}"/>
+                <DataGridTextColumn Header="Leaving From" Width="*" Binding="{Binding LeavingFrom}"/>
+                <DataGridTextColumn Header="GoingTo" Width="*" Binding="{Binding GoingTo}"/>
+                <DataGridTextColumn Header="Departure Date" Width="*" Binding="{Binding DepartureDate}"/>
+                <DataGridTextColumn Header="Arrival Date" Width="*" Binding="{Binding ArrivalDate}"/>
+                <DataGridTextColumn Header="Traveler Amount" Width="*" Binding="{Binding TravelerAmount}"/>
+                <DataGridTextColumn Header="Flight Type" Width="*" Binding="{Binding FlightType}"/>
+                <DataGridTextColumn Header="Flight Cost" Width="*" Binding="{Binding FlightCost}"/>
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
                 <ContextMenu>

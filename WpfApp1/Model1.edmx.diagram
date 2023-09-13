@@ -4,12 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="35a1409444554349998bf58256d9b9ab" Name="Diagram1">
-        <EntityTypeShape EntityType="bankModel.BankTable" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="bankModel.Transaction_history" Width="1.5" PointX="3.375" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="bankModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" />
-        <AssociationConnector Association="bankModel.FK_Transaction_history_BankTable" />
-        <AssociationConnector Association="bankModel.FK_Transaction_history_BankTable1" />
+      <Diagram DiagramId="8c52848cae07488ca21271198643f27c" Name="Diagram1">
+        <EntityTypeShape EntityType="flightModel.BankTable" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="flightModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="flightModel.Transaction_history" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

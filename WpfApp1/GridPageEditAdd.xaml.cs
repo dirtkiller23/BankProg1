@@ -20,8 +20,8 @@ namespace WpfApp1
     /// </summary>
     public partial class GridPageEditAdd : Page
     {
-        bankEntities1 context;
-        public GridPageEditAdd(bankEntities1 cont)
+        flightEntities1 context;
+        public GridPageEditAdd(flightEntities1 cont)
         {
             InitializeComponent();
             context = cont;           
@@ -32,47 +32,53 @@ namespace WpfApp1
         {
             if (flag == true)
             {
-                BankTable bank = new BankTable()
+                BankTable flight = new BankTable()
                 {
-                    AccountNumber = Convert.ToInt64(idBox.Text),
-                    FIO = fioBox.Text,                  
-                    BankName = bankNameTextBox.Text,                   
-                    Deposited = Convert.ToDouble(depositBox.Text),
-                    Withdrawn = Convert.ToDouble(withdrBox.Text),
-                    Password = passBox.Text,
-                    Total = Convert.ToDouble(totalTextBox.Text),
+                    AccountNumber = Convert.ToInt64(idBox_Acc.Text),
+                    FIO = idBox_FIO.Text,
+                    LeavingFrom = idBoxFrom.Text,
+                    GoingTo = idBoxTo.Text,
+                    DepartureDate = Convert.ToDateTime(idDateD.Text),
+                    ArrivalDate = Convert.ToDateTime(idDateA.Text),
+                    TravelerAmount = Convert.ToInt64(idTravelers.Text),
+                    FlightType = idFType.Text,
+                    FlightCost = Convert.ToInt64(idFCost.Text),
                 };
-                context.BankTable.Add(bank);
+                context.BankTable.Add(flight);
                 context.SaveChanges();
                 NewFrame3Edit.Navigate(new GridPage());
             }
             else
             {
-                context.BankTable.Find(greg.AccountNumber).AccountNumber = Convert.ToInt64(idBox.Text);
-                context.BankTable.Find(greg.AccountNumber).FIO = fioBox.Text;               
-                context.BankTable.Find(greg.AccountNumber).BankName = bankNameTextBox.Text;              
-                context.BankTable.Find(greg.AccountNumber).Deposited = Convert.ToDouble(depositBox.Text);
-                context.BankTable.Find(greg.AccountNumber).Withdrawn = Convert.ToDouble(withdrBox.Text);
-                context.BankTable.Find(greg.AccountNumber).Password = passBox.Text;
-                context.BankTable.Find(greg.AccountNumber).Total = Convert.ToDouble(totalTextBox.Text);
+                context.BankTable.Find(greg.AccountNumber).AccountNumber = Convert.ToInt64(idBox_Acc.Text);
+                context.BankTable.Find(greg.AccountNumber).FIO = idBox_FIO.Text;
+                context.BankTable.Find(greg.AccountNumber).LeavingFrom = idBoxFrom.Text;
+                context.BankTable.Find(greg.AccountNumber).GoingTo = idBoxTo.Text;
+                context.BankTable.Find(greg.AccountNumber).DepartureDate = Convert.ToDateTime(idDateD.Text);
+                context.BankTable.Find(greg.AccountNumber).ArrivalDate = Convert.ToDateTime(idDateA.Text);
+                context.BankTable.Find(greg.AccountNumber).TravelerAmount = Convert.ToInt64(idTravelers.Text);
+                context.BankTable.Find(greg.AccountNumber).FlightType = idFType.Text;
+                context.BankTable.Find(greg.AccountNumber).FlightCost = Convert.ToInt64(idFCost.Text);
                 context.SaveChanges();
                 NewFrame3Edit.Navigate(new GridPage());
             }
         }
         BankTable greg;
 
-        public GridPageEditAdd(bankEntities1 cont, BankTable grug)
+        public GridPageEditAdd(flightEntities1 cont, BankTable grug)
         {
             InitializeComponent();
             context = cont;
-            greg = grug;         
-            totalTextBox.Text = grug.Total.ToString();  
-            bankNameTextBox.Text = grug.BankName;
-            idBox.Text = grug.AccountNumber.ToString();
-            fioBox.Text = grug.FIO;
-            depositBox.Text = grug.Deposited.ToString();
-            withdrBox.Text = grug.Withdrawn.ToString();
-            passBox.Text = grug.Password;           
+            greg = grug;
+            idBox_Acc.Text = grug.AccountNumber.ToString();
+            idBox_FIO.Text = grug.FIO;
+            idBoxFrom.Text = grug.LeavingFrom;
+            idBoxTo.Text = grug.GoingTo;
+            idDateD.Text = grug.DepartureDate.ToString();
+            idDateA.Text = grug.ArrivalDate.ToString();
+            idTravelers.Text = grug.TravelerAmount.ToString();
+            idFType.Text = grug.FlightType;
+            idFCost.Text = grug.FlightCost.ToString();
             flag = false;
         }
     }

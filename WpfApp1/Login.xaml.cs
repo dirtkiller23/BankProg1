@@ -19,12 +19,12 @@ namespace WpfApp1
     /// </summary>
     public partial class LoginPage : Page
     {      
-        bankEntities1 context;
+        flightEntities1 context;
         static int counter = 0;
         public LoginPage()
         {
             InitializeComponent();
-            context = new bankEntities1();   
+            context = new flightEntities1();   
         }        
         private void Button_login(object sender, RoutedEventArgs e)
         {

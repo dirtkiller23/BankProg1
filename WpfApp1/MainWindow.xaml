@@ -16,11 +16,6 @@
                 <Image Source="/bank.png" Margin="10" Height="99" Width="146"/>
                 <Button x:Name="LoginButton" Content="Login Form" Click="ShowLoginPage"  Width="136" Height="21"/>
                 <Button Name="GridButton" Content="Grid Overview" Click="ShowGridPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21"/>
-                <Button Name="MoneyButton" Content="Money Transfer" Click="ShowMoneyPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21"/>
-                <Button x:Name="DepositWithdrawButton" Content="Deposit and Withdraw" Click="ShowDepositPage"  Width="136" Height="21"/>
-                <Button Name="TicTacButton" Content="Tic Tac Toe" Click="ShowTicTacPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21"/>
-                <Button Name="CaesarButton" Content="Caesar Cipher" Click="ShowCaesarPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21"/>
-                <Button x:Name="HistoryButton" Content="Transaction History" Click="ShowHistoryPage"  Width="136" Height="21"/>
             </StackPanel>
         </Grid>
         <Frame Grid.Column="1" x:Name="NewFrame" NavigationUIVisibility="Hidden"/>
