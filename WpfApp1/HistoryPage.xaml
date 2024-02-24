@@ -13,29 +13,21 @@
 
         </Grid>
         <Label Content="Transaction History" HorizontalAlignment="Left" FontSize="20" FontFamily="Bookman Old Style" Width="270" Grid.Column="1" Margin="132,0,0,0"/>
-        <Label Content="Search by number:" VerticalAlignment="Top" FontFamily="Bookman Old Style" Margin="0,50,409,0" HorizontalAlignment="Right" Width="250"/>
-        <TextBox x:Name="numaccBox" VerticalAlignment="Top" Margin="197,81,409,0" TextChanged="ChangeStateNumber"/>
+        <Label Content="Search by account number:" VerticalAlignment="Top" FontFamily="Bookman Old Style" Margin="0,50,409,0" HorizontalAlignment="Right" Width="250"/>
+        <TextBox x:Name="numaccBox" VerticalAlignment="Top" Margin="141,81,462,0" TextChanged="ChangeStateNumber"/>
         <DataGrid AutoGenerateColumns="False" Grid.Column="1" Margin="10,118,27,45" Name="historytable">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Number" Width="*" Binding="{Binding AccID}"/>
+                <DataGridTextColumn Header="Account ID" Width="*" Binding="{Binding AccID}"/>
+                <DataGridTextColumn Header="FIO" Width="*" Binding="{Binding FIO}"/>
+                <DataGridTextColumn Header="Bank Name" Width="*" Binding="{Binding BankName}"/>
                 <DataGridTextColumn Header="Amount" Width="*" Binding="{Binding Amount}"/>
                 <DataGridTextColumn Header="Sender" Width="*" Binding="{Binding Sender}"/>
                 <DataGridTextColumn Header="Reciever" Width="*" Binding="{Binding Reciever}"/>
                 <DataGridTextColumn Header="Withdraw Time" Width="*" Binding="{Binding WithdrawTime}"/>
                 <DataGridTextColumn Header="Deposit Time" Width="*" Binding="{Binding DepositTime}"/>
-                <DataGridTextColumn Header="Transfer Time" Width="*" Binding="{Binding TransferTime}"/>
             </DataGrid.Columns>
-            <DataGrid.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Удалить" Click="DeleteCarPage"/>
-                </ContextMenu>
-            </DataGrid.ContextMenu>
         </DataGrid>
-        <Button Content="Export" Name="ExportButton" Click="ExportPage" HorizontalAlignment="Left" Margin="590,74,0,0" VerticalAlignment="Top" Height="23" Width="66" RenderTransformOrigin="0.5,0.5"/>
-        <Button Content="Delete" Name="DeleteButton" Click="DeletePage" HorizontalAlignment="Left" Margin="508,74,0,0" VerticalAlignment="Top" Height="23" Width="65" RenderTransformOrigin="0.5,0.5"/>
-        <Label Content="HELP: You can access your transaction history here." HorizontalAlignment="Left" VerticalAlignment="Top" Height="46" Width="759" FontSize="24" FontFamily="Bookman Old Style" Margin="0,415,0,0" Grid.ColumnSpan="4"/>
-        <ComboBox x:Name="grid_data_search" HorizontalAlignment="Left" Margin="71,81,0,0" VerticalAlignment="Top" Width="110" Height="18" SelectionChanged="grid_data_search_SelectionChanged">
-        </ComboBox>
+        <Label Content="HELP: WIP." HorizontalAlignment="Left" VerticalAlignment="Top" Height="46" Width="759" FontSize="24" FontFamily="Bookman Old Style" Margin="0,415,0,0" Grid.ColumnSpan="4"/>
         <Frame Grid.Column="1" x:Name="NewFrame3Edit" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

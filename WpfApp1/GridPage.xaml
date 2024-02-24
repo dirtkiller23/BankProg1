@@ -11,20 +11,17 @@
 
         </Grid>
         <Label Content="Grid Overview" HorizontalAlignment="Left" FontSize="20" FontFamily="Bookman Old Style" Width="270" Grid.Column="1" Margin="132,0,0,0"/>
-        <Label Content="Search:" VerticalAlignment="Top" FontFamily="Bookman Old Style" Margin="0,50,600,0" HorizontalAlignment="Right" Width="95"/>
-        <TextBox x:Name="numaccBox" VerticalAlignment="Top" Margin="212,81,427,0" TextChanged="ChangeStateNumber" />
+        <Label Content="Search account number:" VerticalAlignment="Top" FontFamily="Bookman Old Style" Margin="0,50,442,0" HorizontalAlignment="Right" Width="217"/>
+        <TextBox x:Name="numaccBox" VerticalAlignment="Top" Margin="141,81,462,0" TextChanged="ChangeStateNumber"/>
         <Button Content="Add" Name="AddButton" Click="AddCarPage" HorizontalAlignment="Left" Margin="590,74,0,0" VerticalAlignment="Top" Height="23" Width="58" RenderTransformOrigin="0.5,0.5"/>
         <DataGrid AutoGenerateColumns="False" Grid.Column="1" Margin="10,118,27,45" Name="moneytable">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="AccNumColumn" Header="ID Number" Width="*" Binding="{Binding AccountNumber}"/>
+                <DataGridTextColumn Header="Account number" Width="*" Binding="{Binding AccountNumber}"/>
                 <DataGridTextColumn Header="FIO" Width="*" Binding="{Binding FIO}"/>
                 <DataGridTextColumn Header="Bank Name" Width="*" Binding="{Binding BankName}"/>
-                <DataGridTextColumn Header="Date Time" Width="*" Binding="{Binding FinalOpTime}"/>
-                <DataGridTextColumn Header="Doc №" Width="*" Binding="{Binding DocNumb}"/>
-                <DataGridTextColumn Header="C1" Width="*" Binding="{Binding C1}"/>
-                <DataGridTextColumn Header="Debit" Width="*" Binding="{Binding Deposited}"/>
-                <DataGridTextColumn Header="Credit" Width="*" Binding="{Binding Withdrawn}"/>
-                <DataGridTextColumn Header="C2" Width="*" Binding="{Binding Total}"/>
+                <DataGridTextColumn Header="Deposited" Width="*" Binding="{Binding Deposited}"/>
+                <DataGridTextColumn Header="Withdrawn" Width="*" Binding="{Binding Withdrawn}"/>
+                <DataGridTextColumn Header="Total" Width="*" Binding="{Binding Total}"/>
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
                 <ContextMenu>
@@ -33,9 +30,7 @@
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
-        <Label x:Name="help_label" Content="HELP: You can delete or edit data by right-clicking the grid." HorizontalAlignment="Left" VerticalAlignment="Top" Height="46" Width="759" FontSize="24" FontFamily="Bookman Old Style" Margin="0,415,0,0" Grid.ColumnSpan="4"/>
+        <Label Content="HELP: You can delete or edit data by right-clicking the grid." HorizontalAlignment="Left" VerticalAlignment="Top" Height="46" Width="759" FontSize="24" FontFamily="Bookman Old Style" Margin="0,415,0,0" Grid.ColumnSpan="4"/>
         <Frame Grid.Column="1" x:Name="NewFrame3Edit" NavigationUIVisibility="Hidden"/>
-        <ComboBox x:Name="grid_data_search" HorizontalAlignment="Left" Margin="105,81,0,0" VerticalAlignment="Top" Width="95" Height="18" SelectionChanged="grid_data_search_SelectionChanged">
-        </ComboBox>
     </Grid>
 </Page>

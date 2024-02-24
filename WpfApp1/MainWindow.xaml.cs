@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.XPath;
-using static WpfApp1.MainWindow;
 
 namespace WpfApp1
 {
@@ -22,58 +21,27 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        bankEntities context;
+        bankEntities1 context;
 
         public static MainWindow _instance;
         public MainWindow()
         {
             _instance = this;
-            bool isAdmin = AdminFlagger.AdminFlag;
-            InitializeComponent();            
-            Logout();
-            return;
-        }
-
-        private void Logout()
-        {
-            LoginButton.IsEnabled = true;
-            LoginButton.Visibility = Visibility.Visible;
+            InitializeComponent();
             GridButton.IsEnabled = false;
-            GridButton.Visibility = Visibility.Hidden;
-            MoneyButton.Visibility = Visibility.Hidden;
             MoneyButton.IsEnabled = false;
-            DepositWithdrawButton.Visibility = Visibility.Hidden;
             DepositWithdrawButton.IsEnabled = false;
-            LogoutButton.IsEnabled = false;
-            AdminFlagger.UserFlag = 0;
-            AdminFlagger.AdminSID = 0;
             NewFrame.Navigate(new LoginPage());
         }
 
-        public void LoggedIn()
+        public void Eban()
         {
             GridButton.IsEnabled = true;
-            GridButton.Visibility = Visibility.Visible;           
-            DepositWithdrawButton.IsEnabled = true;
-            DepositWithdrawButton.Visibility = Visibility.Visible;
-            LoginButton.IsEnabled = false;
-            LogoutButton.IsEnabled = true;
-            LoginButton.Visibility = Visibility.Hidden;
-        }
-        public void LoggedInAsAdmin()
-        {
-            GridButton.IsEnabled = true;
-            GridButton.Visibility = Visibility.Visible;
             MoneyButton.IsEnabled = true;
-            MoneyButton.Visibility = Visibility.Visible;
             DepositWithdrawButton.IsEnabled = true;
-            DepositWithdrawButton.Visibility = Visibility.Visible;
             LoginButton.IsEnabled = false;
-            LogoutButton.IsEnabled = true;
-            LoginButton.Visibility = Visibility.Hidden;
         }
         
-       
         private void ShowGridPage(object sender, RoutedEventArgs e)
         {
             NewFrame.Navigate(new GridPage());
@@ -101,28 +69,6 @@ namespace WpfApp1
         private void ShowHistoryPage(object sender, RoutedEventArgs e)
         {
             NewFrame.Navigate(new HistoryPage());
-        }
-        
-        private void ExitFunc(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-       
-        private void LogoutFunc(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult res = MessageBox.Show("Вы уверены, что хотите выйти из аккаунта?", "Подтвердить", MessageBoxButton.YesNo);
-            if (res == MessageBoxResult.Yes)
-            {
-                try
-                {
-                    Logout();
-                    return;
-                }
-                catch
-                {
-                    MessageBox.Show("Ошибка!");
-                }
-            }
         }
     }
 }

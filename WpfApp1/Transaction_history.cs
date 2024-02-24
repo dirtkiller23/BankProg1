@@ -21,7 +21,6 @@ namespace WpfApp1
         public Nullable<System.DateTime> WithdrawTime { get; set; }
         public Nullable<System.DateTime> DepositTime { get; set; }
         public Nullable<System.DateTime> TransferTime { get; set; }
-        public Nullable<System.DateTime> FinalOpTime { get; set; }
     
         public virtual BankTable BankTable { get; set; }
         public virtual BankTable BankTable1 { get; set; }

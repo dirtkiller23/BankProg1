@@ -5,30 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="490" Width="1014">
+        Title="MainWindow" Height="490" Width="985">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="62"/>
-            <ColumnDefinition Width="138"/>
+            <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <DockPanel x:Name="main_panel"  Background="Red" Grid.ColumnSpan="2" Margin="-5,0,0,0">
+        <Grid Background="Green">
             <StackPanel>
-                <Image Source="/bank.png" Height="99" Width="146"/>
-                <Button x:Name="HistoryButton" Content="Transaction History" Click="ShowHistoryPage"  Width="136" Height="21"/>
-                <Button x:Name="GridButton" Content="Grid Overview" Click="ShowGridPage"  Width="136" Height="21"/>
-                <Button x:Name="DepositWithdrawButton" Content="Deposit and Withdraw" Click="ShowDepositPage"  Width="136" Height="21"/>
-                <Button x:Name="MoneyButton" Content="Money Transfer" Click="ShowMoneyPage"  Width="136" Height="21"/>
-                <Button x:Name="TicTacButton" Content="Tic Tac Toe" Click="ShowTicTacPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21" IsEnabled="False" Visibility="Hidden"/>
-                <Button x:Name="CaesarButton" Content="Caesar Cipher" Click="ShowCaesarPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21" Visibility="Hidden"/>
+                <Image Source="/bank.png" Margin="10" Height="99" Width="146"/>
                 <Button x:Name="LoginButton" Content="Login Form" Click="ShowLoginPage"  Width="136" Height="21"/>
-                <Button x:Name="LogoutButton" Content="Logout" Click="LogoutFunc" Width="82" Height="21"/>
-                <Button x:Name="ExitButton" Content="Exit" Click="ExitFunc" Height="21" Width="82"/>
+                <Button Name="GridButton" Content="Grid Overview" Click="ShowGridPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21"/>
+                <Button Name="MoneyButton" Content="Money Transfer" Click="ShowMoneyPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21"/>
+                <Button x:Name="DepositWithdrawButton" Content="Deposit and Withdraw" Click="ShowDepositPage"  Width="136" Height="21"/>
+                <Button Name="TicTacButton" Content="Tic Tac Toe" Click="ShowTicTacPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21"/>
+                <Button Name="CaesarButton" Content="Caesar Cipher" Click="ShowCaesarPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21"/>
+                <Button x:Name="HistoryButton" Content="Transaction History" Click="ShowHistoryPage"  Width="136" Height="21"/>
             </StackPanel>
-        </DockPanel>
-        <Frame Grid.Column="2" x:Name="NewFrame" NavigationUIVisibility="Hidden"/>
+        </Grid>
+        <Frame Grid.Column="1" x:Name="NewFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
-
 
 </Window>
 

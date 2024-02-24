@@ -5,29 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Хранилище bankModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="AdminUsers">
-          <Key>
-            <PropertyRef Name="AdminID" />
-          </Key>
-          <Property Name="AdminID" Type="bigint" Nullable="false" />
-          <Property Name="AdminUsername" Type="varchar" MaxLength="99" />
-          <Property Name="AdminPassword" Type="varchar" MaxLength="99" />
-        </EntityType>
         <EntityType Name="BankTable">
           <Key>
             <PropertyRef Name="AccountNumber" />
           </Key>
           <Property Name="AccountNumber" Type="bigint" Nullable="false" />
-          <Property Name="Username" Type="varchar" MaxLength="99" />
-          <Property Name="Password" Type="varchar" MaxLength="50" />
           <Property Name="FIO" Type="varchar" MaxLength="50" />
-          <Property Name="DocNumb" Type="varchar" MaxLength="50" />
-          <Property Name="C1" Type="float" />
           <Property Name="BankName" Type="varchar" MaxLength="50" />
-          <Property Name="FinalOpTime" Type="datetime" />
           <Property Name="Deposited" Type="float" />
           <Property Name="Withdrawn" Type="float" />
-          <Property Name="C2" Type="float" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Total" Type="float" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -51,21 +38,8 @@
           <Property Name="WithdrawTime" Type="datetime" />
           <Property Name="DepositTime" Type="datetime" />
           <Property Name="TransferTime" Type="datetime" />
-          <Property Name="FinalOpTime" Type="datetime" />
         </EntityType>
-        <Association Name="FK_BankTable_AdminUsers1">
-          <End Role="AdminUsers" Type="Self.AdminUsers" Multiplicity="1" />
-          <End Role="BankTable" Type="Self.BankTable" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="AdminUsers">
-              <PropertyRef Name="AdminID" />
-            </Principal>
-            <Dependent Role="BankTable">
-              <PropertyRef Name="AccountNumber" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Transaction_history_BankTable1">
+        <Association Name="FK_Transaction_history_BankTable">
           <End Role="BankTable" Type="Self.BankTable" Multiplicity="0..1" />
           <End Role="Transaction_history" Type="Self.Transaction_history" Multiplicity="*" />
           <ReferentialConstraint>
@@ -77,7 +51,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Transaction_history_BankTable2">
+        <Association Name="FK_Transaction_history_BankTable1">
           <End Role="BankTable" Type="Self.BankTable" Multiplicity="0..1" />
           <End Role="Transaction_history" Type="Self.Transaction_history" Multiplicity="*" />
           <ReferentialConstraint>
@@ -121,19 +95,14 @@
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Хранилище bankModelContainer">
-          <EntitySet Name="AdminUsers" EntityType="Self.AdminUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BankTable" EntityType="Self.BankTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transaction_history" EntityType="Self.Transaction_history" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_BankTable_AdminUsers1" Association="Self.FK_BankTable_AdminUsers1">
-            <End Role="AdminUsers" EntitySet="AdminUsers" />
-            <End Role="BankTable" EntitySet="BankTable" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Transaction_history_BankTable1" Association="Self.FK_Transaction_history_BankTable1">
+          <AssociationSet Name="FK_Transaction_history_BankTable" Association="Self.FK_Transaction_history_BankTable">
             <End Role="BankTable" EntitySet="BankTable" />
             <End Role="Transaction_history" EntitySet="Transaction_history" />
           </AssociationSet>
-          <AssociationSet Name="FK_Transaction_history_BankTable2" Association="Self.FK_Transaction_history_BankTable2">
+          <AssociationSet Name="FK_Transaction_history_BankTable1" Association="Self.FK_Transaction_history_BankTable1">
             <End Role="BankTable" EntitySet="BankTable" />
             <End Role="Transaction_history" EntitySet="Transaction_history" />
           </AssociationSet>
@@ -142,110 +111,29 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="bankModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="AdminUsers">
-          <Key>
-            <PropertyRef Name="AdminID" />
-          </Key>
-          <Property Name="AdminID" Type="Int64" Nullable="false" />
-          <Property Name="AdminUsername" Type="String" MaxLength="99" FixedLength="false" Unicode="false" />
-          <Property Name="AdminPassword" Type="String" MaxLength="99" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="BankTable" Relationship="Self.FK_BankTable_AdminUsers1" FromRole="AdminUsers" ToRole="BankTable" />
-        </EntityType>
         <EntityType Name="BankTable">
           <Key>
             <PropertyRef Name="AccountNumber" />
           </Key>
           <Property Name="AccountNumber" Type="Int64" Nullable="false" />
-          <Property Name="Username" Type="String" MaxLength="99" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Deposited" Type="Double" />
           <Property Name="Withdrawn" Type="Double" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Total" Type="Double" />
-          <NavigationProperty Name="AdminUsers" Relationship="Self.FK_BankTable_AdminUsers1" FromRole="BankTable" ToRole="AdminUsers" />
-          <NavigationProperty Name="Transaction_history" Relationship="Self.FK_Transaction_history_BankTable1" FromRole="BankTable" ToRole="Transaction_history" />
-          <NavigationProperty Name="Transaction_history1" Relationship="Self.FK_Transaction_history_BankTable2" FromRole="BankTable" ToRole="Transaction_history" />
-          <Property Name="C1" Type="Double" />
-          <Property Name="C2" Type="Double" />
-          <Property Name="DocNumb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FinalOpTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Transaction_history" Relationship="bankModel.FK_Transaction_history_BankTable" FromRole="BankTable" ToRole="Transaction_history" />
+          <NavigationProperty Name="Transaction_history1" Relationship="bankModel.FK_Transaction_history_BankTable1" FromRole="BankTable" ToRole="Transaction_history" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="Transaction_history">
-          <Key>
-            <PropertyRef Name="AccID" />
-          </Key>
-          <Property Name="AccID" Type="Int64" Nullable="false" />
-          <Property Name="Amount" Type="Double" />
-          <Property Name="Sender" Type="Int64" />
-          <Property Name="Reciever" Type="Int64" />
-          <Property Name="WithdrawTime" Type="DateTime" Precision="3" />
-          <Property Name="DepositTime" Type="DateTime" Precision="3" />
-          <Property Name="TransferTime" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="BankTable" Relationship="Self.FK_Transaction_history_BankTable1" FromRole="Transaction_history" ToRole="BankTable" />
-          <NavigationProperty Name="BankTable1" Relationship="Self.FK_Transaction_history_BankTable2" FromRole="Transaction_history" ToRole="BankTable" />
-          <Property Name="FinalOpTime" Type="DateTime" Precision="3" />
-        </EntityType>
-        <Association Name="FK_BankTable_AdminUsers1">
-          <End Role="AdminUsers" Type="Self.AdminUsers" Multiplicity="1" />
-          <End Role="BankTable" Type="Self.BankTable" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="AdminUsers">
-              <PropertyRef Name="AdminID" />
-            </Principal>
-            <Dependent Role="BankTable">
-              <PropertyRef Name="AccountNumber" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Transaction_history_BankTable1">
-          <End Role="BankTable" Type="Self.BankTable" Multiplicity="0..1" />
-          <End Role="Transaction_history" Type="Self.Transaction_history" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BankTable">
-              <PropertyRef Name="AccountNumber" />
-            </Principal>
-            <Dependent Role="Transaction_history">
-              <PropertyRef Name="Sender" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Transaction_history_BankTable2">
-          <End Role="BankTable" Type="Self.BankTable" Multiplicity="0..1" />
-          <End Role="Transaction_history" Type="Self.Transaction_history" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BankTable">
-              <PropertyRef Name="AccountNumber" />
-            </Principal>
-            <Dependent Role="Transaction_history">
-              <PropertyRef Name="Reciever" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="bankEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AdminUsers" EntityType="Self.AdminUsers" />
+        <EntityContainer Name="bankEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BankTable" EntityType="Self.BankTable" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="Transaction_history" EntityType="Self.Transaction_history" />
-          <AssociationSet Name="FK_BankTable_AdminUsers1" Association="Self.FK_BankTable_AdminUsers1">
-            <End Role="AdminUsers" EntitySet="AdminUsers" />
-            <End Role="BankTable" EntitySet="BankTable" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Transaction_history_BankTable1" Association="Self.FK_Transaction_history_BankTable1">
+          <EntitySet Name="Transaction_history" EntityType="bankModel.Transaction_history" />
+          <EntitySet Name="sysdiagrams" EntityType="bankModel.sysdiagrams" />
+          <AssociationSet Name="FK_Transaction_history_BankTable" Association="bankModel.FK_Transaction_history_BankTable">
             <End Role="BankTable" EntitySet="BankTable" />
             <End Role="Transaction_history" EntitySet="Transaction_history" />
           </AssociationSet>
-          <AssociationSet Name="FK_Transaction_history_BankTable2" Association="Self.FK_Transaction_history_BankTable2">
+          <AssociationSet Name="FK_Transaction_history_BankTable1" Association="bankModel.FK_Transaction_history_BankTable1">
             <End Role="BankTable" EntitySet="BankTable" />
             <End Role="Transaction_history" EntitySet="Transaction_history" />
           </AssociationSet>
@@ -280,6 +168,54 @@
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
+        <EntityType Name="Transaction_history">
+          <Key>
+            <PropertyRef Name="AccID" />
+          </Key>
+          <Property Name="AccID" Type="Int64" Nullable="false" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="Sender" Type="Int64" />
+          <Property Name="Reciever" Type="Int64" />
+          <Property Name="WithdrawTime" Type="DateTime" Precision="3" />
+          <Property Name="DepositTime" Type="DateTime" Precision="3" />
+          <Property Name="TransferTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BankTable" Relationship="bankModel.FK_Transaction_history_BankTable" FromRole="Transaction_history" ToRole="BankTable" />
+          <NavigationProperty Name="BankTable1" Relationship="bankModel.FK_Transaction_history_BankTable1" FromRole="Transaction_history" ToRole="BankTable" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Transaction_history_BankTable">
+          <End Type="bankModel.BankTable" Role="BankTable" Multiplicity="0..1" />
+          <End Type="bankModel.Transaction_history" Role="Transaction_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BankTable">
+              <PropertyRef Name="AccountNumber" />
+            </Principal>
+            <Dependent Role="Transaction_history">
+              <PropertyRef Name="Sender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaction_history_BankTable1">
+          <End Type="bankModel.BankTable" Role="BankTable" Multiplicity="0..1" />
+          <End Type="bankModel.Transaction_history" Role="Transaction_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BankTable">
+              <PropertyRef Name="AccountNumber" />
+            </Principal>
+            <Dependent Role="Transaction_history">
+              <PropertyRef Name="Reciever" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -296,56 +232,41 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище bankModelContainer" CdmEntityContainer="bankEntities">
-          <EntitySetMapping Name="AdminUsers">
-            <EntityTypeMapping TypeName="bankModel.AdminUsers">
-              <MappingFragment StoreEntitySet="AdminUsers">
-                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
-                <ScalarProperty Name="AdminUsername" ColumnName="AdminUsername" />
-                <ScalarProperty Name="AdminPassword" ColumnName="AdminPassword" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="Хранилище bankModelContainer" CdmEntityContainer="bankEntities1">
           <EntitySetMapping Name="BankTable">
             <EntityTypeMapping TypeName="bankModel.BankTable">
               <MappingFragment StoreEntitySet="BankTable">
-                <ScalarProperty Name="FinalOpTime" ColumnName="FinalOpTime" />
-                <ScalarProperty Name="DocNumb" ColumnName="DocNumb" />
-                <ScalarProperty Name="C2" ColumnName="C2" />
-                <ScalarProperty Name="C1" ColumnName="C1" />
                 <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="FIO" ColumnName="FIO" />
                 <ScalarProperty Name="BankName" ColumnName="BankName" />
                 <ScalarProperty Name="Deposited" ColumnName="Deposited" />
                 <ScalarProperty Name="Withdrawn" ColumnName="Withdrawn" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="bankModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Transaction_history">
             <EntityTypeMapping TypeName="bankModel.Transaction_history">
               <MappingFragment StoreEntitySet="Transaction_history">
-                <ScalarProperty Name="FinalOpTime" ColumnName="FinalOpTime" />
-                <ScalarProperty Name="AccID" ColumnName="AccID" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Sender" ColumnName="Sender" />
-                <ScalarProperty Name="Reciever" ColumnName="Reciever" />
-                <ScalarProperty Name="WithdrawTime" ColumnName="WithdrawTime" />
-                <ScalarProperty Name="DepositTime" ColumnName="DepositTime" />
                 <ScalarProperty Name="TransferTime" ColumnName="TransferTime" />
+                <ScalarProperty Name="DepositTime" ColumnName="DepositTime" />
+                <ScalarProperty Name="WithdrawTime" ColumnName="WithdrawTime" />
+                <ScalarProperty Name="Reciever" ColumnName="Reciever" />
+                <ScalarProperty Name="Sender" ColumnName="Sender" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="AccID" ColumnName="AccID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="bankModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
