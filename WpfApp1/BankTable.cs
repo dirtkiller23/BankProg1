@@ -22,13 +22,19 @@ namespace WpfApp1
         }
     
         public long AccountNumber { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
         public string FIO { get; set; }
         public string BankName { get; set; }
         public Nullable<double> Deposited { get; set; }
         public Nullable<double> Withdrawn { get; set; }
-        public string Password { get; set; }
         public Nullable<double> Total { get; set; }
+        public Nullable<double> C1 { get; set; }
+        public Nullable<double> C2 { get; set; }
+        public string DocNumb { get; set; }
+        public Nullable<System.DateTime> FinalOpTime { get; set; }
     
+        public virtual AdminUsers AdminUsers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transaction_history> Transaction_history { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

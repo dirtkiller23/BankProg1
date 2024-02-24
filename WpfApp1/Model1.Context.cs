@@ -15,10 +15,10 @@ namespace WpfApp1
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class bankEntities1 : DbContext
+    public partial class bankEntities : DbContext
     {
-        public bankEntities1()
-            : base("name=bankEntities1")
+        public bankEntities()
+            : base("name=bankEntities")
         {
         }
     
@@ -27,9 +27,10 @@ namespace WpfApp1
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AdminUsers> AdminUsers { get; set; }
         public virtual DbSet<BankTable> BankTable { get; set; }
-        public virtual DbSet<Transaction_history> Transaction_history { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Transaction_history> Transaction_history { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

@@ -12,18 +12,12 @@ namespace WpfApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class Transaction_history
+    public partial class AdminUsers
     {
-        public long AccID { get; set; }
-        public Nullable<double> Amount { get; set; }
-        public Nullable<long> Sender { get; set; }
-        public Nullable<long> Reciever { get; set; }
-        public Nullable<System.DateTime> WithdrawTime { get; set; }
-        public Nullable<System.DateTime> DepositTime { get; set; }
-        public Nullable<System.DateTime> TransferTime { get; set; }
-        public Nullable<System.DateTime> FinalOpTime { get; set; }
+        public long AdminID { get; set; }
+        public string AdminUsername { get; set; }
+        public string AdminPassword { get; set; }
     
         public virtual BankTable BankTable { get; set; }
-        public virtual BankTable BankTable1 { get; set; }
     }
 }

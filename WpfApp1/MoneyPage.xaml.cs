@@ -22,8 +22,8 @@ namespace WpfApp1
     /// </summary>
     public partial class MoneyPage : Page
     {
-        bankEntities1 bd = new bankEntities1();
-        public MoneyPage(bankEntities1 cont)
+        bankEntities bd = new bankEntities();
+        public MoneyPage(bankEntities cont)
         {
             InitializeComponent();          
         }
@@ -49,8 +49,12 @@ namespace WpfApp1
                         {
                             t.Total = t.Total - Math.Round(float.Parse(SendAmountBox.Text), 2);
                             t2.Total = t2.Total + Math.Round(float.Parse(SendAmountBox.Text), 2);
-                            //bd.Database.ExecuteSqlCommand("insert into Transaction_history(Amount,Sender,Reciever,TransferTime) values ({0},{1},{2},{3})", Math.Round(float.Parse(SendAmountBox.Text), 2), Int64.Parse(idBoxFrom.Text), Int64.Parse(idBoxTo.Text), DateTime.Now);
-                            bd.SaveChanges();
+                            var maxAccID = bd.Database.SqlQuery<long>("SELECT ISNULL(MAX(AccID),0) FROM Transaction_history").FirstOrDefault();
+                            long newAccID = maxAccID + 1; // get AccID value + 1 every operation
+                          
+
+                            bd.Database.ExecuteSqlCommand("insert into Transaction_history(AccID,Amount,Sender,Reciever,TransferTime) values ({0},{1},{2},{3},{4})", newAccID, Math.Round(float.Parse(SendAmountBox.Text), 2), Int64.Parse(idBoxFrom.Text), Int64.Parse(idBoxTo.Text), DateTime.Now);
+                            bd.SaveChanges();   
                             MessageBox.Show("Transfer Successful");
                         }
                         else { MessageBox.Show("Not enough money"); }
