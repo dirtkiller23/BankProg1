@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace WpfApp1
 {
-    /// <summary>
-    /// Логика взаимодействия для AdminUserDialog.xaml
-    /// </summary>
     public partial class AdminUserDialog : Window
     {
         public AdminUserDialog()
@@ -31,7 +28,6 @@ namespace WpfApp1
                 UserComboBox.ItemsSource = context.BankTable.ToList();
             }
         }
-
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
             if (UserComboBox.SelectedItem != null)

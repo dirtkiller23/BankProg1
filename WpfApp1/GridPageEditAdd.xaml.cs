@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace WpfApp1
 {
-    /// <summary>
-    /// Логика взаимодействия для GridPageEditAdd.xaml
-    /// </summary>
     public partial class GridPageEditAdd : Page
     {
         bankEntities context;
@@ -58,9 +55,7 @@ namespace WpfApp1
             accBox.Visibility = Visibility.Hidden;
             acc_label.Visibility = Visibility.Hidden;           
             totalTextBox.Visibility = Visibility.Hidden;
-        }
-
-        
+        }      
         private void SaveCar(object sender, RoutedEventArgs e)
         {
         if (flag == true && admin == true)
@@ -119,7 +114,6 @@ namespace WpfApp1
             }
         }
         BankTable greg;
-
         public GridPageEditAdd(bankEntities cont, BankTable grug)
         {
             InitializeComponent();

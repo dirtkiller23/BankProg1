@@ -14,23 +14,26 @@ using System.Windows.Shapes;
 
 namespace WpfApp1
 {
-
     public static class AdminFlagger
     {
         public static long? UserFlag { get; set; }       
         public static long? AdminSID { get; set; }
         public static bool AdminFlag { get; set; }
         public static bool NewUser { get; set; }
-    }   
-
+        public static void Reset()
+        {
+            UserFlag = 0;
+            AdminSID = 0;
+        }
+    }
     public static class RichText
     {
         public static string UserN { get; set; }
         public static string BankN { get; set; }
-
         public static string FIO { get; set; }
+        public static string Total { get; set; }
+        public static string AccID { get; set; }
     }
-  
     public partial class LoginPage : Page
     {   
         bankEntities context;
@@ -39,8 +42,7 @@ namespace WpfApp1
         {
             InitializeComponent();
             context = new bankEntities();
-        }
-              
+        }             
         private void Button_login(object sender, RoutedEventArgs e)
         {
             counter++;
@@ -78,7 +80,7 @@ namespace WpfApp1
                     RichText.UserN = userC.Username;
                     RichText.BankN = userC.BankName;
                     RichText.FIO = userC.FIO;
-
+                    RichText.Total = userC.Total.ToString();
                 }
                 AdminFlagger.AdminFlag = false;               
                 MainWindow._instance.LoggedIn();

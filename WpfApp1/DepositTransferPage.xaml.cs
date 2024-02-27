@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,18 +17,27 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WpfApp1
-{
-    /// <summary>
-    /// Логика взаимодействия для DepositTransferPage.xaml
-    /// </summary>
+{  
     public partial class DepositTransferPage : Page
     {
         bankEntities bd = new bankEntities();
         public DepositTransferPage()
         {
             InitializeComponent();
+            RichUserDisplay();
         }
-
+        private void RichUserDisplay()
+        {
+            if (AdminFlagger.AdminFlag == true)
+            {
+                help_label.Content = "Logged in as Admin";
+            }
+            else if (AdminFlagger.AdminFlag == false)
+            {
+                username_label.Content = "Account Number:" + AdminFlagger.UserFlag;
+                help_label.Content = "Logged in as: Username: " + RichText.UserN + "," + "FIO: " + RichText.FIO + "," + "Bank: " + RichText.BankN;
+            }
+        }
         private void Deposit_Click(object sender, RoutedEventArgs e)
         {
             if (idBoxFromD.Text == "")
@@ -76,65 +86,87 @@ namespace WpfApp1
                 }
                 else
                     WithdrawFunc();
-            }
-            
+            }           
         }
-
         private void DepositFunc()
-        {                      
-                BankTable t = bd.BankTable.Find(Int64.Parse(idBoxFromD.Text));
-                var a = t.Deposited;
-                if (a == null)
-                    t.Deposited = 0;
-                t.Deposited = t.Deposited + Math.Round(float.Parse(DepositBox.Text), 2);
-                t.Total = t.Total + Math.Round(float.Parse(DepositBox.Text), 2);
-
-                var maxAccID = bd.Database.SqlQuery<long>("SELECT ISNULL(MAX(AccID),0) FROM Transaction_history").FirstOrDefault();
-                long newAccID = maxAccID + 1;
-                bd.Database.ExecuteSqlCommand("insert into Transaction_history(AccID,Amount,Reciever,DepositTime,FinalOpTime) values ({0},{1},{2},{3},{4})", newAccID, Math.Round(float.Parse(DepositBox.Text), 2), Int64.Parse(idBoxFromD.Text), DateTime.Now,DateTime.Now);
-                bd.BankTable.Find(t.AccountNumber).FinalOpTime = Convert.ToDateTime(DateTime.Now);
-                bd.BankTable.Find(t.AccountNumber).DocNumb = "Debit";
+        {
+            long userId = Int64.Parse(idBoxFromD.Text);
+            double depo = Math.Round(double.Parse(DepositBox.Text), 2);
+            BankTable account = bd.BankTable.Find(userId);
+            if (AdminFlagger.UserFlag.Value == userId)
+            {
+                account.Deposited = (account.Deposited ?? 0) + depo;
+                account.Total = account.Total + depo;
+                account.FinalOpTime = DateTime.Now;
+                account.DocNumb = "Debit";
+                long newAccID = 0;
+                var maxAccID = bd.Transaction_history.Max(th => (long?)th.AccID);
+                var transaction = new Transaction_history
+                {
+                    AccID = newAccID,
+                    Amount = depo,
+                    Reciever = userId,
+                    DepositTime = DateTime.Now,
+                    FinalOpTime = DateTime.Now
+                };
+                bd.Transaction_history.Add(transaction);
+                account.FinalOpTime = DateTime.Now;
+                account.DocNumb = "Debit";
                 bd.SaveChanges();
-                MessageBox.Show("Amount Added");           
+            }
+            else
+            {
+                MessageBox.Show($"Account with ID {userId} not found.");
+                return;
+            }
+            MessageBox.Show("Amount Added");
         }
-
-        
         private void WithdrawFunc()
         {
+            long userId = Int64.Parse(idBoxFromW.Text);
+            double withdrAmount = double.Parse(WithdrawBox.Text);
+            withdrAmount = Math.Round(withdrAmount, 2);
+
+            if (AdminFlagger.UserFlag.Value == userId)
             {
                 {
+                    var account = bd.BankTable.Find(userId);
+                    if (account == null)
                     {
-                        if (AdminFlagger.UserFlag.Value == Int64.Parse(idBoxFromW.Text))
+                        MessageBox.Show("Account not found.");
+                        return;
+                    }
+                    account.Withdrawn = account.Withdrawn ?? 0;
+                    if (account.Total >= withdrAmount)
+                    {
+                        account.Withdrawn += withdrAmount;
+                        account.Total -= withdrAmount;
+                        long newAccID = 0;
+                        var maxAccID = bd.Transaction_history.Max(th => (long?)th.AccID);
+                        newAccID = (maxAccID ?? 0) + 1;
+                        var transaction = new Transaction_history
                         {
-                            BankTable t = bd.BankTable.Find(Int64.Parse(idBoxFromW.Text));
-                            var a = t.Withdrawn;
-                            if (a == null)
-                                t.Withdrawn = 0;
-                            if (t.Total >= float.Parse(WithdrawBox.Text))
-                            {
-                                t.Withdrawn = t.Withdrawn + Math.Round(float.Parse(WithdrawBox.Text), 2);
-                                t.Total = t.Total - Math.Round(float.Parse(WithdrawBox.Text), 2);
-
-                                var maxAccID = bd.Database.SqlQuery<long>("SELECT ISNULL(MAX(AccID),0) FROM Transaction_history").FirstOrDefault();
-                                long newAccID = maxAccID + 1;
-                                bd.Database.ExecuteSqlCommand("insert into Transaction_history(AccID,Amount,Sender,WithdrawTime) values ({0},{1},{2},{3})", newAccID, Math.Round(float.Parse(WithdrawBox.Text), 2), Int64.Parse(idBoxFromW.Text), DateTime.Now);
-                                bd.BankTable.Find(t.AccountNumber).FinalOpTime = Convert.ToDateTime(DateTime.Now);
-                                bd.BankTable.Find(t.AccountNumber).DocNumb = "Credit";
-                                bd.SaveChanges();
-                                MessageBox.Show("Withdraw complete");
-                            }
-                            else
-                            {
-                                MessageBox.Show("Not enough money");
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("You do not have permission to withdraw from this account.");
-                        }
-
+                            AccID = newAccID,
+                            Amount = withdrAmount,
+                            Sender = userId,
+                            WithdrawTime = DateTime.Now,
+                            FinalOpTime = DateTime.Now
+                        };
+                        bd.Transaction_history.Add(transaction);
+                        account.FinalOpTime = DateTime.Now;
+                        account.DocNumb = "Credit";
+                        bd.SaveChanges();
+                        MessageBox.Show("Withdraw complete");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Not enough money");
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("You do not have permission to withdraw from this account.");
             }
         }
     }

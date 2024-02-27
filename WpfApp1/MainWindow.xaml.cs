@@ -16,14 +16,10 @@ using System.Xml.XPath;
 using static WpfApp1.MainWindow;
 
 namespace WpfApp1
-{
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
+{  
     public partial class MainWindow : Window
     {
         bankEntities context;
-
         public static MainWindow _instance;
         public MainWindow()
         {
@@ -33,7 +29,26 @@ namespace WpfApp1
             Logout();
             return;
         }
-
+        private void LogoutFunc(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult res = MessageBox.Show("Вы уверены, что хотите выйти из аккаунта?", "Подтвердить", MessageBoxButton.YesNo);
+            if (res == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    Logout();
+                    return;
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка!");
+                }
+            }
+        }
+        private void NavigateToPage(Page page)
+        {
+            NewFrame.Navigate(page);
+        }
         private void Logout()
         {
             LoginButton.IsEnabled = true;
@@ -45,11 +60,9 @@ namespace WpfApp1
             DepositWithdrawButton.Visibility = Visibility.Hidden;
             DepositWithdrawButton.IsEnabled = false;
             LogoutButton.IsEnabled = false;
-            AdminFlagger.UserFlag = 0;
-            AdminFlagger.AdminSID = 0;
-            NewFrame.Navigate(new LoginPage());
-        }
-
+            AdminFlagger.Reset();
+            NavigateToPage(new LoginPage());
+        }       
         public void LoggedIn()
         {
             GridButton.IsEnabled = true;
@@ -71,58 +84,12 @@ namespace WpfApp1
             LoginButton.IsEnabled = false;
             LogoutButton.IsEnabled = true;
             LoginButton.Visibility = Visibility.Hidden;
-        }
-        
-       
-        private void ShowGridPage(object sender, RoutedEventArgs e)
-        {
-            NewFrame.Navigate(new GridPage());
-        }
-        private void ShowMoneyPage(object sender, RoutedEventArgs e)
-        {          
-            NewFrame.Navigate(new MoneyPage(context)); 
-        }
-        private void ShowTicTacPage(object sender, RoutedEventArgs e)
-        {
-            NewFrame.Navigate(new TicTacToe());
-        }
-        private void ShowCaesarPage(object sender, RoutedEventArgs e)
-        {
-            NewFrame.Navigate(new CaesarPage());
-        }
-        private void ShowLoginPage(object sender, RoutedEventArgs e)
-        {
-            NewFrame.Navigate(new LoginPage());
-        }
-        private void ShowDepositPage(object sender, RoutedEventArgs e)
-        {
-            NewFrame.Navigate(new DepositTransferPage());
-        }
-        private void ShowHistoryPage(object sender, RoutedEventArgs e)
-        {
-            NewFrame.Navigate(new HistoryPage());
-        }
-        
-        private void ExitFunc(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-       
-        private void LogoutFunc(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult res = MessageBox.Show("Вы уверены, что хотите выйти из аккаунта?", "Подтвердить", MessageBoxButton.YesNo);
-            if (res == MessageBoxResult.Yes)
-            {
-                try
-                {
-                    Logout();
-                    return;
-                }
-                catch
-                {
-                    MessageBox.Show("Ошибка!");
-                }
-            }
-        }
+        }       
+        private void ShowGridPage(object sender, RoutedEventArgs e) => NavigateToPage(new GridPage());                        
+        private void ShowMoneyPage(object sender, RoutedEventArgs e) => NavigateToPage(new MoneyPage(context));             
+        private void ShowLoginPage(object sender, RoutedEventArgs e) => NavigateToPage(new LoginPage());        
+        private void ShowDepositPage(object sender, RoutedEventArgs e) => NavigateToPage(new DepositTransferPage());       
+        private void ShowHistoryPage(object sender, RoutedEventArgs e) => NavigateToPage(new HistoryPage());
+        private void ExitFunc(object sender, RoutedEventArgs e) => this.Close();                      
     }
 }

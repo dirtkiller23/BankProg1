@@ -77,13 +77,9 @@
     <Compile Include="BankTable.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="CaesarPage.xaml.cs">
-      <DependentUpon>CaesarPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DepositTransferPage.xaml.cs">
       <DependentUpon>DepositTransferPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GameLogic.cs" />
     <Compile Include="HistoryPage.xaml.cs">
       <DependentUpon>HistoryPage.xaml</DependentUpon>
     </Compile>
@@ -102,7 +98,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Position.cs" />
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -112,17 +107,10 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="TicTacToe.xaml.cs">
-      <DependentUpon>TicTacToe.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Transaction_history.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Page Include="AdminUserDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CaesarPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -178,10 +166,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TicTacToe.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MoneyPage.xaml.cs">
@@ -208,6 +192,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
