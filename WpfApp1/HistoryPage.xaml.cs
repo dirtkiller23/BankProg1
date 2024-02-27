@@ -19,15 +19,13 @@ using System.Data.Entity;
 
 namespace WpfApp1
 {
-    /// <summary>
-    /// Логика взаимодействия для HistoryPage.xaml
-    /// </summary>
     public partial class HistoryPage : Page
     {
         bankEntities context;
         public HistoryPage()
         {
             InitializeComponent();
+            RichUserDisplay();
             context = new bankEntities();
             bool isAdmin = AdminFlagger.AdminFlag;
             historytable.ItemsSource = context.Transaction_history.ToList();
@@ -37,6 +35,17 @@ namespace WpfApp1
             {
                 AdminBlock();
                 return;
+            }
+        }
+        private void RichUserDisplay()
+        {
+            if (AdminFlagger.AdminFlag == true)
+            {
+                help_label.Content = "Logged in as Admin";
+            }
+            else if (AdminFlagger.AdminFlag == false)
+            {
+                help_label.Content = "Logged in as: Username: " + RichText.UserN + "," + "FIO: " + RichText.FIO + "," + "Bank: " + RichText.BankN;
             }
         }
         private void AdminBlock()
@@ -92,7 +101,6 @@ namespace WpfApp1
                             query = query.Where(x => x.DepositTime.ToString().Contains(search));
                         }
                         break;
-
                 }
             }
             historytable.ItemsSource = query.ToList();
@@ -123,7 +131,6 @@ namespace WpfApp1
                 }
             }
         }
-
         private void DeleteCarPage(object sender, RoutedEventArgs e)
         {
             MessageBoxResult res = MessageBox.Show("Вы уверены, что хотите удалить данные?", "Подтвердить", MessageBoxButton.YesNo);
@@ -141,7 +148,33 @@ namespace WpfApp1
                 }
             }
         }
+        private void GridExport(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog();
+            saveFileDialog.Filter = "CSV File|*.csv|TXT document|*.txt";
+            saveFileDialog.Title = "Export to CSV";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                var dataGridItems = historytable.ItemsSource as IEnumerable<Transaction_history>;
+                string filePath = saveFileDialog.FileName;
 
+                if (dataGridItems == null || !dataGridItems.Any())
+                {
+                    MessageBox.Show("There is no data to export.");
+                    return;
+                }
+
+                using (StreamWriter file = new StreamWriter(filePath))
+                {
+                    foreach (var transaction in dataGridItems)
+                    {
+                        string csvLine = $"Number:{transaction.AccID}, Amount:{transaction.Amount}, Sender:{transaction.Sender}, Reciever:{transaction.Reciever}, Withdraw Time:{transaction.WithdrawTime}, Deposit Time:{transaction.DepositTime}, Transfer Time:{transaction.TransferTime}";
+                        file.WriteLine(csvLine);
+                    }
+                }
+                MessageBox.Show("Table exported to " + filePath);
+            }
+        }
         private void ExportPage(object sender, RoutedEventArgs e)
         {
             var _context = new bankEntities();
@@ -166,7 +199,6 @@ namespace WpfApp1
                         }
                     }
                 }
-
                 MessageBox.Show("Table exported to " + filePath);
             }
         }

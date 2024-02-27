@@ -19,8 +19,6 @@
                 <Button x:Name="GridButton" Content="Grid Overview" Click="ShowGridPage"  Width="136" Height="21"/>
                 <Button x:Name="DepositWithdrawButton" Content="Deposit and Withdraw" Click="ShowDepositPage"  Width="136" Height="21"/>
                 <Button x:Name="MoneyButton" Content="Money Transfer" Click="ShowMoneyPage"  Width="136" Height="21"/>
-                <Button x:Name="TicTacButton" Content="Tic Tac Toe" Click="ShowTicTacPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21" IsEnabled="False" Visibility="Hidden"/>
-                <Button x:Name="CaesarButton" Content="Caesar Cipher" Click="ShowCaesarPage"  Width="136"  Margin="32,2" HorizontalAlignment="Left" Height="21" Visibility="Hidden"/>
                 <Button x:Name="LoginButton" Content="Login Form" Click="ShowLoginPage"  Width="136" Height="21"/>
                 <Button x:Name="LogoutButton" Content="Logout" Click="LogoutFunc" Width="82" Height="21"/>
                 <Button x:Name="ExitButton" Content="Exit" Click="ExitFunc" Height="21" Width="82"/>
@@ -28,7 +26,5 @@
         </DockPanel>
         <Frame Grid.Column="2" x:Name="NewFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
-
-
 </Window>
 

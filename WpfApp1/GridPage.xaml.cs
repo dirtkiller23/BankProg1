@@ -15,13 +15,9 @@ using System.Windows.Shapes;
 
 namespace WpfApp1
 {
-    /// <summary>
-    /// Логика взаимодействия для GridPage.xaml
-    /// </summary>
     public partial class GridPage : Page
     {
-        bankEntities context;
-      
+        bankEntities context;     
         public class BothTables
         {
             public long AccountNumber { get; set; }
@@ -33,7 +29,6 @@ namespace WpfApp1
             public double? Deposited { get; set; }
             public double? Withdrawn { get; set; }
             public double? Total { get; set; }
-
         }      
         public void DataGridJoin()          
         {
@@ -55,10 +50,8 @@ namespace WpfApp1
                             };
                 var mt = query.ToList();
                 moneytable.ItemsSource = mt;
-
             }
         }
-
         public void LegacyDataGridJoin()
         {
             moneytable.ItemsSource = context.BankTable.ToList();
@@ -76,11 +69,8 @@ namespace WpfApp1
             {
                 AdminBlock();
                 return;
-            }
-       
-
-        }   
-        
+            }      
+        }         
         private void RichUserDisplay()
         {                 
             if ( AdminFlagger.AdminFlag == true)
@@ -104,10 +94,9 @@ namespace WpfApp1
            var search = numaccBox.Text.ToLower();
            var selected = grid_data_search.SelectedItem as string;
            var query = context.BankTable.AsQueryable();
-
            if (!string.IsNullOrEmpty( search ) ) 
             { 
-             switch (selected)
+             switch (selected)  
                 {
                     case "ID Number":
                         if (long.TryParse(search, out var accountNumber))
